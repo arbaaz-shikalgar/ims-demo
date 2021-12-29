@@ -574,7 +574,7 @@ const CreateInvoice = withRouter(({ history }) => {
                                 </div>
                             </div> */}
 
-              {/* <div className="field">
+              <div className="field">
                                 <label className="label">HSN/SAC</label>
                                 <div className="control">
                                     <input
@@ -587,7 +587,7 @@ const CreateInvoice = withRouter(({ history }) => {
                                     />
                                 </div>
                             </div>
-
+                            {/*
                             <div className="field">
                                 <label className="label">Quantity</label>
                                 <div className="control">

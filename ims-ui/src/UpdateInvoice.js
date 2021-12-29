@@ -679,8 +679,8 @@ const UpdateInvoice = ({ match }) => {
                   ></input>
                 </div>
               </div>
-              <div className='field invisible'>
-                <label className='label'>hsnsac</label>
+              <div className='field'>
+                <label className='label'>HSN / SAC</label>
                 <div className='control'>
                   <input
                     className='input'
