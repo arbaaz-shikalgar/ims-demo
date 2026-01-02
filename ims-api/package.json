@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./index.js --exec babel-node -e js | pino-colada"
+    "start": "nodemon --exec \"npx babel-node\" ./index.js -e js"
   },
   "keywords": [],
   "author": "",
@@ -27,8 +27,7 @@
     "twilio": "^3.55.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-0": "^6.24.1"
+    "@babel/core": "^7.22.5",
+    "@babel/preset-env": "^7.22.5"
   }
 }

@@ -95,7 +95,7 @@ function ListOfInvoice() {
       cell: (row) => (
         <button>
           <a href={`updateInvoice/${row._id}`}>
-            <i className='fas fa-edit'></i>
+            📝
           </a>
         </button>
       ),
@@ -106,7 +106,7 @@ function ListOfInvoice() {
       cell: (row) => (
         <button>
           <a href={`printinvoice/${row._id}`}>
-            <i className='fas fa-print'></i>
+           🖨️
           </a>
         </button>
       ),
@@ -122,7 +122,7 @@ function ListOfInvoice() {
           }}
         >
           <a>
-            <i className='fas fa-trash-alt'></i>
+           🗑️
           </a>
         </button>
       ),
