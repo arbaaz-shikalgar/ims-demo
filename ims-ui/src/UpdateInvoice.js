@@ -566,12 +566,17 @@ const UpdateInvoice = ({ match }) => {
                     </option>
                     <option value='Cash'>Cash</option>
                     <option value='Swipe'>Swipe</option>
-                    <option value='Account Transfer by HDFC'>
-                      Account Transfer by HDFC
+                     <option value='Account Transfer by HDFC Bank'>
+                      Account Transfer by HDFC BANK
                     </option>
-                    <option value='Account Transfer by IDBI'>
-                      Account Transfer by IDBI
+                    <option value='Account Transfer by IDBI Bank'>
+                      Account Transfer by IDBI BANK
                     </option>
+                    <option value='Account Transfer by Union Bank'>
+                      Account Transfer by Union BANK
+                    </option>
+                    <option value='Paytm Card Swipe'>PAYTM CARD SWIPE</option>
+                    <option value='Paytm Card EMI'>PAYTM CARD EMI</option>
                     <option value='HDFC BANK LTD'>HDFC BANK LTD</option>
                     <option value='Bajaj Finance'>Bajaj Finance</option>
                     <option value='TVS CREDIT SERVICES LTD'>

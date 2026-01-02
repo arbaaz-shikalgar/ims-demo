@@ -196,17 +196,20 @@ const PrintInvoice = ({ match }) => {
             <tr>
               <td rowSpan='4' text-align='center'>
                 <div className='column'>
-                  {/* <p className="cgst-title"><b>J D ENTERPRISES &nbsp; जे डी एन्टरप्राइझेस </b></p> */}
-                  <img src={logo} alt={'logo'} />
-                  <p>Azad Chowk Koregaon, District Satara 415501</p>
+                  <div className='row'>
+                  <div className='column'><img src={logo} alt={'logo'} /></div>
+                  <div className='column'> {/* <p className="cgst-title"><b>J D ENTERPRISES &nbsp; जे डी एन्टरप्राइझेस </b></p> */}
+                  <p> Shop No 5,6,7,18 HEMRAJ COMPLEX Opp. Daulat Chitra Mandir Koregaon, District Satara 415501</p>
                   <p> GSTIN/UIN: 27AEBPA1115P1ZT</p>
                   <p> State Name : Maharashtra, Code : 27 </p>
                   <p>
                     {' '}
-                    Office.No: (02163) 220987, Mobile No. 9700220987 /
-                    9394987987{' '}
+                    Office.No: (02163) 220987, Mobile No.9394987987 / 9561220987 
+                    {' '}
                   </p>
-                  <p> E-Mail : jdenterprises0987@gmail.com </p>
+                  <p> E-Mail : jdenterprises0987@gmail.com </p></div>
+                    </div>
+                 
                 </div>
               </td>
               <td>
@@ -351,6 +354,7 @@ const PrintInvoice = ({ match }) => {
               <td>
                 <p> CGST @{CGSTPer}%</p>
                 <p> SGST @{SGSTPer}%</p>
+                {/* <p> IGST @ 18 %</p> */}
               </td>
               <td></td>
               <td></td>
@@ -360,6 +364,7 @@ const PrintInvoice = ({ match }) => {
               <td>
                 <p>{SGSTAmt.toFixed(2)}</p>
                 <p>{CGSTAmt.toFixed(2)}</p>
+                {/* <p>{totalGSTAmt.toFixed(2)}</p> */}
               </td>
             </tr>
             <tr>
