@@ -25,3 +25,10 @@ code {
   box-sizing: border-box;
   padding: 1.7rem 1.2rem;
 }
+
+/* Larger logo for printable invoice */
+.print-logo {
+  width: 200px;
+  height: auto;
+  margin: 8px 0;
+}

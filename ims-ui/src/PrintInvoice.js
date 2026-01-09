@@ -190,6 +190,7 @@ const PrintInvoice = ({ match }) => {
         </button>
       </h1>
       <div id='printme' className='newnote-page m-t-40'>
+        <img src={logo} className='invoice-watermark' alt={'watermark'} />
         <table border='1px' width='100%' id='cssTable'>
           <caption>GST Invoice</caption>
           <tbody>
@@ -197,14 +198,15 @@ const PrintInvoice = ({ match }) => {
               <td rowSpan='4' text-align='center'>
                 <div className='column'>
                   <div className='row'>
-                  <div className='column'><img src={logo} alt={'logo'} /></div>
+                  <div className='column'>
+                    <img src={logo} className='print-logo' alt={'logo'} /></div>
                   <div className='column'> {/* <p className="cgst-title"><b>J D ENTERPRISES &nbsp; जे डी एन्टरप्राइझेस </b></p> */}
-                  <p> Shop No 5,6,7,18 HEMRAJ COMPLEX Opp. Daulat Chitra Mandir Koregaon, District Satara 415501</p>
+                  <p> <b>SHOP NO 5,6,17,18 HEMRAJ COMPLEX OPP. DAULAT CHITRA MANDIR KOREGAON, DISTRICT SATARA 415501</b></p>
                   <p> GSTIN/UIN: 27AEBPA1115P1ZT</p>
                   <p> State Name : Maharashtra, Code : 27 </p>
                   <p>
                     {' '}
-                    Office.No: (02163) 220987, Mobile No.9394987987 / 9561220987 
+                    Office.No: (02163) 220987, Mobile No. 9394987987 / 9561220987 
                     {' '}
                   </p>
                   <p> E-Mail : jdenterprises0987@gmail.com </p></div>
