@@ -190,7 +190,6 @@ const PrintInvoice = ({ match }) => {
         </button>
       </h1>
       <div id='printme' className='newnote-page m-t-40'>
-        <img src={logo} className='invoice-watermark' alt={'watermark'} />
         <table border='1px' width='100%' id='cssTable'>
           <caption>GST Invoice</caption>
           <tbody>
@@ -478,6 +477,7 @@ const PrintInvoice = ({ match }) => {
             </tr>
           </tbody>
         </table>
+         <img src={logo} className='invoice-watermark' alt={'watermark'} />
       </div>
     </div>
   );
