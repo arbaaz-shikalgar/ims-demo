@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { notify } from 'react-notify-toast';
 import gql from 'graphql-tag';
@@ -139,21 +139,17 @@ const UpdateInvoice = ({ match }) => {
   console.log('UpdateInvoice--------->', match.params);
 
   const [title, setTitle] = useState('');
-  let [content, setContent] = useState('');
-
-  // const title  [title, setTitle] = useState('');
-  // const content  [content, setTitle] = useState('');
+  const [content, setContent] = useState('');
   const [address, setAddress] = useState('');
   const [emailId, setEmailId] = useState('');
   const [contactNo, setContactNo] = useState('');
   const [invoiceNo, setInvoiceNo] = useState('');
-  let [deliveryNote, setDeliveryNote] = useState('');
+  const [deliveryNote, setDeliveryNote] = useState('');
   const [supplierRef, setSupplierRef] = useState('');
   const [otherRef, setOtherRef] = useState('');
   const [buyersOrderNo, setBuyersOrderNo] = useState('');
   const [dispatchDocumentNo, setDispatchDocumentNo] = useState('');
-  // const [deliveryNoteDate, setDeliveryNoteDate] = useState('');
-  let [deliveryNoteDate, setStartDate] = useState(new Date());
+  const [deliveryNoteDate, setDeliveryNoteDate] = useState(new Date());
   const [dispatchedThrough, setDispatchedThrough] = useState('');
   const [destination, setDestination] = useState('');
   const [termsOfDelivery, setTermsOfDelivery] = useState('');
@@ -165,7 +161,7 @@ const UpdateInvoice = ({ match }) => {
   const [quantity, setQuantity] = useState('');
   const [rate, setRate] = useState('');
   const [per, setPer] = useState('');
-  const [discount, setdDscount] = useState('');
+  const [discount, setDiscount] = useState('');
   const [amount, setAmount] = useState('');
   const [totalAmount, setTotalAmount] = useState('');
   const [totalAmountInWords, setTotalAmountInWords] = useState('');
@@ -180,6 +176,40 @@ const UpdateInvoice = ({ match }) => {
 
   const [updateNote] = useMutation(UPDATE_INVOICE);
 
+  // Initialize state with fetched data using useEffect pattern
+  useEffect(() => {
+    if (data && data.getJdentBuyer) {
+      const invoice = data.getJdentBuyer;
+      setTitle(invoice.title || '');
+      setContent(invoice.content || '');
+      setAddress(invoice.address || '');
+      setEmailId(invoice.emailId || '');
+      setContactNo(invoice.contactNo || '');
+      setInvoiceNo(invoice.invoiceNo || '');
+      setDeliveryNote(invoice.deliveryNote || '');
+      setSupplierRef(invoice.supplierRef || '');
+      setOtherRef(invoice.otherRef || '');
+      setBuyersOrderNo(invoice.buyersOrderNo || '');
+      setDispatchDocumentNo(invoice.dispatchDocumentNo || '');
+      setDeliveryNoteDate(new Date(invoice.deliveryNoteDate) || new Date());
+      setDispatchedThrough(invoice.dispatchedThrough || '');
+      setDestination(invoice.destination || '');
+      setTermsOfDelivery(invoice.termsOfDelivery || '');
+      setSRNumber(invoice.srNo || '');
+      setDisriptionOfGoods(invoice.disriptionOfGoods || '');
+      setModelNo(invoice.modelNo || '');
+      setSirNo(invoice.sirNo || '');
+      setHsnsac(invoice.hsnsac || '');
+      setQuantity(invoice.quantity || '');
+      setRate(invoice.rate || '');
+      setPer(invoice.per || '');
+      setDiscount(invoice.discount || '');
+      setAmount(invoice.amount || '');
+      setTotalAmount(invoice.totalAmount || '');
+      setTotalAmountInWords(invoice.totalAmountInWords || '');
+    }
+  }, [data]);
+
   if (loading) return <div>Fetching note</div>;
   if (error) return <div>Error fetching note</div>;
 
@@ -187,11 +217,6 @@ const UpdateInvoice = ({ match }) => {
  
 
   const invoice = data.getJdentBuyer;
-
-
-  deliveryNoteDate=new Date(invoice.deliveryNoteDate);
-  content=invoice.content
-  deliveryNote=invoice.deliveryNote
 
   var amountString = parseInt(data.getJdentBuyer.totalAmount);
 
@@ -365,10 +390,13 @@ const UpdateInvoice = ({ match }) => {
                   ? totalAmountInWords
                   : invoice.totalAmountInWords,
               },
+            }).then(() => {
+              console.log('ON SUBMIT ', invoice);
+              notify.show('Invoice was edited successfully', 'success');
+            }).catch((error) => {
+              console.error('Error updating invoice:', error);
+              notify.show('Error updating invoice: ' + error.message, 'error');
             });
-            console.log('ON SUBMIT ', invoice);
-
-            notify.show('Invoice was edited successfully', 'success');
           }}
         >
           {/* column start here */}
@@ -648,10 +676,8 @@ const UpdateInvoice = ({ match }) => {
         showYearDropdown={true}
         scrollableYearDropdown={true}
       dateFormat="dd/MM/yyyy"
-         
                     selected={deliveryNoteDate}
-                    
-                    onChange={(date) => setStartDate(date)}
+                    onChange={(date) => setDeliveryNoteDate(date)}
                   />
                 </div>
               </div>
@@ -757,7 +783,7 @@ const UpdateInvoice = ({ match }) => {
                     name='discount'
                     placeholder='discount'
                     defaultValue={invoice.discount}
-                    onChange={(e) => setdDscount(e.target.value)}
+                    onChange={(e) => setDiscount(e.target.value)}
                   ></input>
                 </div>
               </div>

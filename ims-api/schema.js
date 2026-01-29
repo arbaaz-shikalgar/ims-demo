@@ -120,6 +120,12 @@ type JdentBuyer {
 
  scalar Date
 
+ type TransportStatus {
+  provider: String!
+  configured: Boolean!
+  detail: String
+ }
+
  type Query {
   getNote(_id: ID!): Note
   allNotes: [Note]
@@ -127,6 +133,7 @@ type JdentBuyer {
   allEntries: [Entry]
   getJdentBuyer(_id: ID!): JdentBuyer
   allJdentBuyers: [JdentBuyer]
+  transportStatus: TransportStatus
  }
 
  input NoteInput {
@@ -168,6 +175,11 @@ input EntryUpdateInput {
  }
 
 
+ type EmailResponse {
+  success: Boolean!
+  message: String
+ }
+
  type Mutation {
   createNote(input: NoteInput) : Note
   updateNote(_id: ID!, input: NoteUpdateInput): Note
@@ -178,6 +190,7 @@ input EntryUpdateInput {
   createBuyer(input: JdentBuyerInput) : JdentBuyer
   updateBuyer(_id: ID!, input: JdentBuyerUpdateInput): JdentBuyer
   deleteBuyer(_id: ID!) : JdentBuyer
+  sendMail(to: String!, from: String!, subject: String!, body: String!, invoiceId: ID, attachInvoice: Boolean): EmailResponse
  }
 
 `;

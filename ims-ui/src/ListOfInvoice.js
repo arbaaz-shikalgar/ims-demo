@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
+import SendMail from './SendMail';
 import './App.css';
 import DataTable from 'react-data-table-component';
 import DataTableExtensions from 'react-data-table-component-extensions';
@@ -112,6 +113,15 @@ function ListOfInvoice() {
       ),
     },
     {
+      name: 'Send Mail',
+      button: true,
+      cell: (row) => (
+        <button onClick={(e) => { e.preventDefault(); openSendMail(row); }} className='button'>
+          ✉️
+        </button>
+      ),
+    },
+    {
       name: 'Delete',
       button: true,
       cell: (row) => (
@@ -128,6 +138,19 @@ function ListOfInvoice() {
       ),
     },
   ];
+  const [showSendMail, setShowSendMail] = useState(false);
+  const [selectedInvoice, setSelectedInvoice] = useState(null);
+
+  function openSendMail(row) {
+    setSelectedInvoice(row);
+    setShowSendMail(true);
+  }
+
+  function closeSendMail() {
+    setShowSendMail(false);
+    setSelectedInvoice(null);
+  }
+
   const { loading, error, data } = useQuery(BUYERS_QUERY);
 
   function onDelete(row) {
@@ -180,6 +203,14 @@ function ListOfInvoice() {
           highlightOnHover
         />
       </DataTableExtensions>
+      {showSendMail && (
+        <SendMail
+          isOpen={showSendMail}
+          onClose={closeSendMail}
+          toEmail={selectedInvoice ? selectedInvoice.emailId : ''}
+          invoice={selectedInvoice}
+        />
+      )}
     </div>
   );
 }
